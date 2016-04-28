@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-var placeSucre = new Schema({
+var placeSucreSchema = new Schema({
   name: { type: String },
   rating: { type: String },
   address: { type: String },
@@ -9,4 +9,4 @@ var placeSucre = new Schema({
   pathImage: { type: String}
 });
 
-module.exports = mongoose.model('placeSucre', placeSucre);
+module.exports = mongoose.model('placeSucre', placeSucreSchema);

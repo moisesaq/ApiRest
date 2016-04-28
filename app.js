@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
+var PlaceSucre = require('./models/place');
 var PlaceSucreCtrl = require('./controllers/showPlaces');
 
 //Example route
@@ -34,10 +35,10 @@ showPlaces.route('/placesSucre')
 .get(PlaceSucreCtrl.findAllPlacesSucre)
 .post(PlaceSucreCtrl.addPlaceSucre);
 
-showPlaces.route('/placeSucre/:id')
-.get(PlaceSucreCtrl.findById)
-.put(PlaceSucreCtrl.updatePlaceSucre)
-.delete(PlaceSucreCtrl.deletePlaceSucre);
+showPlaces.route('/placesSucre/:id')
+  .get(PlaceSucreCtrl.findById)
+  .put(PlaceSucreCtrl.updatePlaceSucre)
+  .delete(PlaceSucreCtrl.deletePlaceSucre);
 
 app.use('/api', showPlaces);
 

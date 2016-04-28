@@ -1,6 +1,6 @@
-//var mongoose = require('mongoose');
-//var PlaceSucre = mongoose.model('placeSucre');
-var PlaceSucre = require('../models/place');
+var mongoose = require('mongoose');
+var PlaceSucre = mongoose.model('placeSucre');
+//var PlaceSucre = require('../models/place');
 
 //GET - Return all places in the DB
 exports.findAllPlacesSucre = function(req, res){
@@ -22,8 +22,8 @@ exports.findById = function(req, res){
 };
 
 exports.addPlaceSucre = function(req, res){
-  console.log('POST');
-  console.log(res.body);
+  console.log('POST /addPlaceSucre/');
+  console.log(req.body);
    var placeSucre = new PlaceSucre({
      name: req.body.name,
      rating: req.body.rating,
@@ -39,7 +39,9 @@ exports.addPlaceSucre = function(req, res){
 };
 
 exports.updatePlaceSucre = function(req, res){
+  console.log('PUT /placesSucre/' + req.body.name);
   PlaceSucre.findById(req.params.id, function(err, placeSucre){
+    if(err) return res.status(500).send(err.message);
     placeSucre.name = req.body.name;
     placeSucre.rating = req.body.rating;
     placeSucre.address = req.body.address;
@@ -49,7 +51,7 @@ exports.updatePlaceSucre = function(req, res){
     placeSucre.save(function(err){
       if(err) return res.status(500).send(err.message);
       res.status(200).jsonp(placeSucre);
-    })
+    });
   });
 };
 
@@ -57,7 +59,7 @@ exports.deletePlaceSucre = function(req, res){
   PlaceSucre.findById(req.params.id, function(err, placeSucre){
     placeSucre.remove(function(err){
       if(err) return res.status(500).send(err.message);
-      res.status(200).send();
+      res.status(200).send('ok');
     });
   });
 };
