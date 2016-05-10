@@ -12,6 +12,7 @@ exports.findAllPlacesSucre = function(req, res){
   });
 };
 
+//GET - Return a place the DB
 exports.findById = function(req, res){
   PlaceSucre.findById(req.params.id, function(err, placeSucre){
     if(err) return res.send(500, err.message);
@@ -21,6 +22,7 @@ exports.findById = function(req, res){
   });
 };
 
+//ADD a place in the DB
 exports.addPlaceSucre = function(req, res){
   console.log('POST /addPlaceSucre/');
   console.log(req.body);
@@ -38,6 +40,7 @@ exports.addPlaceSucre = function(req, res){
    });
 };
 
+//UPDATE a place in the DB
 exports.updatePlaceSucre = function(req, res){
   console.log('PUT /placesSucre/' + req.body.name);
   PlaceSucre.findById(req.params.id, function(err, placeSucre){
@@ -55,6 +58,7 @@ exports.updatePlaceSucre = function(req, res){
   });
 };
 
+//DELETE a place in the DB
 exports.deletePlaceSucre = function(req, res){
   PlaceSucre.findById(req.params.id, function(err, placeSucre){
     placeSucre.remove(function(err){

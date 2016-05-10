@@ -28,7 +28,7 @@ var PlaceSucreCtrl = require('./controllers/showPlaces');
 // });
 // app.use(router)
 
-//API router
+//API router for handling Data Base
 var showPlaces = express.Router();
 
 showPlaces.route('/placesSucre')
@@ -43,7 +43,7 @@ showPlaces.route('/placesSucre/:id')
 app.use('/api', showPlaces);
 
 
-//Start server
-app.listen(3000, function(){
+//Start server in IP: 192.168.1.42 in the PORT: 3000
+app.listen(3000, '192.168.1.42',function(){
     console.log('Node server running on localhost in port 3000');
 });
